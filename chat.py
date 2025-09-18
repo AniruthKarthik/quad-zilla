@@ -1,23 +1,10 @@
-# pip install -qU langchain-google-genai to call the model
+import google.generativeai as genai
 
-from langgraph.prebuilt import create_react_agent
-from langchain_google_genai import ChatGoogleGenerativeAI
+genai.configure(api_key="AIzaSyA4R0fK8vpOalvykeZCq59oMq1mvtr0o34")
+model = genai.GenerativeModel("models/gemini-1.5-flash")
 
-def get_weather(city: str) -> str:
-    """Get weather for a given city."""
-    return f"It's always sunny in {city}!"
+def ask_bot(prompt : str) -> str:
+    response = model.generate_content(prompt)
+    print(response.text)
 
-# You'll need to get a Google AI Studio API key and set it as an environment variable
-# export GOOGLE_API_KEY="YOUR_API_KEY"
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest")
-
-agent = create_react_agent(
-    model=llm,
-    tools=[get_weather],
-    prompt="You are a helpful assistant"
-)
-
-result = agent.invoke(
-    {"messages": [{"role": "user", "content": "what is the weather in sf"}]}
-)
-print(result)
+    return response.text

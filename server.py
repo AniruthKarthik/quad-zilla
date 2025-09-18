@@ -1,7 +1,13 @@
 from fastapi import FastAPI
+
+# CORS - cross origin resource sharing
 from fastapi.middleware.cors import CORSMiddleware
+
+# gives typed models to parse and validitate JSON.
 from pydantic import BaseModel
 
+
+# init the app
 app = FastAPI()
 
 # Allow frontend to call backend (CORS)
