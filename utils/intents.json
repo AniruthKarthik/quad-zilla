@@ -1,0 +1,219 @@
+[
+  {
+    "intent": "greeting",
+    "patterns": [
+      "hi",
+      "hello",
+      "hey",
+      "good morning",
+      "good evening",
+      "howdy",
+      "greetings",
+      "what's up",
+      "hi there"
+    ],
+    "responses": [
+      "Hey there! Excited to help you learn today! What's your focus?",
+      "Hello! Ready to dive into your studies? Tell me your goals!",
+      "Hi! What's the topic or subject you want to explore?",
+      "Good morning! Let’s make learning fun—where should we start?",
+      "Evening vibes! How can I tailor today’s study session for you?"
+    ]
+  },
+  {
+    "intent": "goodbye",
+    "patterns": [
+      "bye",
+      "goodbye",
+      "see you later",
+      "talk later",
+      "catch you later",
+      "farewell",
+      "quit"
+    ],
+    "responses": [
+      "Bye! Great progress today—come back to keep learning!",
+      "See you later! Your study streak is saved for next time.",
+      "Farewell! Let’s pick up where you left off soon.",
+      "Catch you later! Stay curious and keep studying!"
+    ]
+  },
+  {
+    "intent": "thanks",
+    "patterns": [
+      "thanks",
+      "thank you",
+      "thanks a lot",
+      "appreciate it",
+      "grateful",
+      "cheers",
+      "thank you so much"
+    ],
+    "responses": [
+      "You’re welcome! How can I boost your learning next?",
+      "No problem! What’s the next step in your study plan?",
+      "Glad to help! Want to dive deeper into your topic?",
+      "Anytime! Share feedback to make your sessions even better."
+    ]
+  },
+  {
+    "intent": "ask_name",
+    "patterns": [
+      "what is your name",
+      "who are you",
+      "your name",
+      "what do I call you",
+      "name please"
+    ],
+    "responses": [
+      "I’m StudyBot, your personalized learning buddy! What’s your name?",
+      "Call me StudyBot! Ready to customize your study session?",
+      "StudyBot here, built to help you learn smarter. Who are you?"
+    ]
+  },
+  {
+    "intent": "ask_subject",
+    "patterns": [
+      "help with math",
+      "study maths",
+      "mathematicx",
+      "mathematics",
+      "algebra",
+      "geometry",
+      "calculus",
+      "help with physics",
+      "study chemistry",
+      "biology lesson",
+      "english help",
+      "programming",
+      "code python",
+      "history study"
+    ],
+    "responses": [
+      "Awesome, let’s dive into your subject! What specific topic or concept do you want to tackle?",
+      "Great choice! Are you a beginner, intermediate, or advanced in this subject? Let’s start!",
+      "Let’s learn! Tell me a chapter or area you’re struggling with, and I’ll customize it for you.",
+      "I’ve got you! Want a quick quiz or explanation to kick things off?"
+    ]
+  },
+  {
+    "intent": "study_tip",
+    "patterns": [
+      "study tip",
+      "how to study",
+      "learn effectively",
+      "study hacks",
+      "improve learning",
+      "retention tips"
+    ],
+    "responses": [
+      "Try spaced repetition: review material at increasing intervals to lock it in!",
+      "Use active recall—test yourself instead of re-reading. Want a quick quiz?",
+      "Break study sessions into 25-min chunks with 5-min breaks (Pomodoro!).",
+      "Summarize key points in your own words. Want help making notes?",
+      "Visualize concepts with mind maps. I can guide you through one!"
+    ]
+  },
+  {
+    "intent": "exam_prep",
+    "patterns": [
+      "exam help",
+      "prepare for exams",
+      "exam tips",
+      "study for test",
+      "mock test",
+      "revision plan"
+    ],
+    "responses": [
+      "Let’s ace that exam! Share your exam date and topics for a tailored plan.",
+      "Focus on high-yield topics and practice past papers. Need a mock test?",
+      "Create a schedule: 1 hour daily on key areas. Want me to build one?",
+      "Simulate exam conditions with timed questions. Ready to try?"
+    ]
+  },
+  {
+    "intent": "motivation",
+    "patterns": [
+      "feeling demotivated",
+      "lazy to study",
+      "stay motivated",
+      "need encouragement",
+      "no focus",
+      "burnout"
+    ],
+    "responses": [
+      "You’re doing great—every step counts! What’s your big goal to stay inspired?",
+      "Take a quick break, then try a 10-min study sprint. Reward yourself after!",
+      "Small wins add up! Let’s set a tiny goal for today—what’s one thing you want to learn?",
+      "Burnout’s tough. Try a fun activity like a quiz to get back on track!"
+    ]
+  },
+  {
+    "intent": "learning_style",
+    "patterns": [
+      "learning style",
+      "how do I learn",
+      "visual learner",
+      "auditory learner",
+      "kinesthetic learner",
+      "study preferences"
+    ],
+    "responses": [
+      "Let’s find your style! Do you prefer visuals, listening, hands-on, or reading?",
+      "Visual learner? I’ll use diagrams and charts to boost your understanding.",
+      "Auditory style? Try my spoken explanations or podcast recommendations!",
+      "Kinesthetic learner? Let’s use interactive tools like virtual labs or coding sandboxes."
+    ]
+  },
+  {
+    "intent": "practice_problems",
+    "patterns": [
+      "give problems",
+      "practice questions",
+      "math problems",
+      "coding exercises",
+      "quiz me",
+      "drills"
+    ],
+    "responses": [
+      "Here’s a challenge: Try solving this problem! I’ll check your answer.",
+      "Let’s practice: 5 questions on your topic. Ready for the first one?",
+      "Quiz time! Answer this, and I’ll adjust difficulty based on your response.",
+      "Here’s a drill set tailored to your level. Want hints available?"
+    ]
+  },
+  {
+    "intent": "explain_concept",
+    "patterns": [
+      "explain this",
+      "break down concept",
+      "what is this",
+      "how does it work",
+      "simple explanation",
+      "teach me about"
+    ],
+    "responses": [
+      "Let’s break it down! Tell me the concept, and I’ll explain it simply.",
+      "Here’s a clear explanation with examples. Want a visual or step-by-step?",
+      "Think of it like this: [analogy]. Need more details or a practice problem?",
+      "I’ll explain it in your style—visual, auditory, or hands-on. Pick one!"
+    ]
+  },
+  {
+    "intent": "adaptive_adjustment",
+    "patterns": [
+      "too hard",
+      "make easier",
+      "too easy",
+      "speed up",
+      "slow down",
+      "adjust difficulty"
+    ],
+    "responses": [
+      "Let’s make it easier with simpler examples. Feel better now?",
+      "Too hard? I’ll break it into smaller steps. Try this instead!",
+      "Want a challenge? Let’s ramp up to advanced problems!",
+      "Slowing down—more explanations and examples coming up."
+    ]
+  }
+]
