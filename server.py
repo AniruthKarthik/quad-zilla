@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # gives typed models to parse and validitate JSON.
 from pydantic import BaseModel
 
+from chat import ask_bot
 
 # init the app
 app = FastAPI()
@@ -26,4 +27,8 @@ class Message(BaseModel):
 @app.post("/chat")
 async def chat_endpoint(message: Message):
     print("User said:", message.text)  # just for debugging
-    return {"reply": "hi"}  # always return "hi" for now
+
+    response : str = ask_bot(message.text) 
+
+    # return {"reply": "hi"}  # always return "hi" for now
+    return {"reply" : response}
