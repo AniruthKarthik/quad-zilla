@@ -1,4 +1,8 @@
 import os
+
+from load_dotenv import load_dotenv
+load_dotenv()
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -12,7 +16,7 @@ from langchain_core.prompts import ChatPromptTemplate
 #     ))
 
 # Setup Gemini through LangChain
-os.environ["GOOGLE_API_KEY"] = "AIzaSyA4R0fK8vpOalvykeZCq59oMq1mvtr0o34"
+
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.2)
 
 # System prompt restriction
@@ -29,6 +33,6 @@ chain = prompt | llm
 
 def ask_bot(prompt : str) -> str:
     response = chain.invoke({"user_input": prompt})
-    print(response.text)
+    print(response.content)
 
-    return response.text()
+    return response.content
