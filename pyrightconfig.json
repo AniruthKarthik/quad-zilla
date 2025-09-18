@@ -1,0 +1,8 @@
+{
+  "typeCheckingMode": "basic",
+  "venvPath": "/home/krish/.pyenv/versions/",
+  "venv": "acm",
+  "extraPaths": [
+    "/home/krish/.pyenv/versions/acm/lib/python3.10/site-packages/"
+  ]
+}
