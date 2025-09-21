@@ -1,29 +1,12 @@
 import json
-import typing
+import os
 
 # load the api key from .env
 from load_dotenv import load_dotenv
 load_dotenv()
 
 from crewai import Agent, Crew, Task, LLM
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import ChatPromptTemplate
-
-
-
-# # Create the model
-# llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.2)
-#
-# # System prompt restriction
-# prompt = ChatPromptTemplate.from_messages([
-#     ("system", "You are a personalized learning assistant inside a Learning Management System (LMS). "
-#                "You only answer questions related to coursework, assignments, and academic learning. "
-#                "If a question is outside this scope, politely refuse and redirect the user back to their learning tasks.""Reply only is normal text, dont use markdown."),
-#     ("human", "{user_input}")
-# ])
-#
-# # Combine prompt + LLM into a chain
-# chain = prompt | llm
+from crewai_tools import SerperDevTool
 
 
 # Create the model
@@ -36,11 +19,21 @@ coordinator_agent = Agent(
         "Decide which specialist agent should handle the user's request. "
         "If the request is about quizzes, practice questions, or tests → send to 'Practice Problem Generator'. "
         "If the request is about learning concepts, explanations, or walkthroughs → send to 'Tutor'. "
+        "If the request is about searching online → send to 'Search'. "
         "If unrelated to academics → send to 'Default chatbot'. "
         "Respond ONLY with JSON {agent_role, task_description}."
     ),
     backstory="A clear-minded dispatcher that looks at user queries and delegates them to the correct expert.",
     llm=llm,)
+
+search_tool = SerperDevTool()
+search_agent = Agent(
+    role="Search",
+    goal="Search the web for information",
+    backstory="A helpful assistant that can search the web for information.",
+    llm=llm,
+    tools=[search_tool]
+)
 
 tutor_agent = Agent(
     role="Tutor",
@@ -81,7 +74,7 @@ def coordinate_queries(query):
             "User request:\n\n"
             f"{query}\n\n"
             "Please respond with ONLY a JSON object like:\n"
-            '{"agent_role": "Tutor" | "Practice Problem Generator" | "Default chatbot", ' 
+            '{"agent_role": "Tutor" | "Practice Problem Generator" | "Search" | "Default chatbot", ' 
             '"task_description": "..." }\n'
             "No extra text before or after the JSON."
             "The description should be a prompt that can be given to another agent"
@@ -91,9 +84,8 @@ def coordinate_queries(query):
     )
 
     # temporary crew
-    crew = Crew(agents=[coordinator_agent, tutor_agent, practice_agent, default_agent], tasks=[task])
-    coord_result = crew.kickoff()
-    coord_result = str(coord_result)
+    crew = Crew(agents=[coordinator_agent, tutor_agent, practice_agent, default_agent, search_agent], tasks=[task])
+    coord_result = str(crew.kickoff())
 
     coord_json = get_as_json(coord_result)
 
@@ -102,26 +94,32 @@ def coordinate_queries(query):
 
     result = run_task_with_agent(coord_json["task_description"], coord_json["agent_role"])
 
-    # desc = coord_json.get("task_description")
-    # agent = coord_json.get("agent_role")
-    # return f"DESC: {desc}\n\n AGENT: {agent}\n\n RESULT: {result}"
+
+    return f"DESC: {coord_json['task_description']}\n AGENT: {coord_json['agent_role']} \n\n Result: {result}"
     return result
 
 
 def get_as_json(coord_result : str) -> dict[str, str]:
-    start = coord_result.find("{")
-    end = coord_result.find("}")
+    try:
+        start = coord_result.find("{")
+        end = coord_result.rfind("}") + 1
 
-    result = coord_result[start:end + 1]
-    as_json = json.loads(result)
+        if start == -1 or end == 0:
+            return {}
 
-    return as_json
+        result = coord_result[start:end]
+        as_json = json.loads(result)
+        return as_json
+
+    except json.JSONDecodeError:
+        return {}
 
 
 def run_task_with_agent(task_description: str, agent: str):
     agent_map = {
         "Tutor": tutor_agent,
         "Practice Problem Generator": practice_agent,
+        "Search": search_agent,
         "Default chatbot": default_agent,
     }
 
@@ -130,7 +128,7 @@ def run_task_with_agent(task_description: str, agent: str):
             description=task_description,
             expected_output="Proper result for the given description")
 
-    temp_crew = Crew(agents=[coordinator_agent, tutor_agent, practice_agent, default_agent], tasks=[delegated_task])
+    temp_crew = Crew(agents=[coordinator_agent, tutor_agent, practice_agent, default_agent, search_agent], tasks=[delegated_task])
 
     result = temp_crew.kickoff()
     return str(result)

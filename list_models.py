@@ -1,6 +1,10 @@
-import google.generativeai as genai
-
-genai.configure(api_key="AIzaSyA4R0fK8vpOalvykeZCq59oMq1mvtr0o34")
-
-for model in genai.list_models():
-    print(model.name)
+# import google.generativeai as genai
+# import os
+#
+# # IMPORTANT: Set your Google API key as an environment variable
+# # export GOOGLE_API_KEY='YOUR_API_KEY'
+#
+# gena.configure(api_key=os.environ.get("GOOGLE_API_KEY"))
+#
+# for model in genai.list_models():
+#     print(model.name)
