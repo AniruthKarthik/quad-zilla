@@ -68,11 +68,11 @@
 <h1 class="text-2xl font-bold text-background-dark dark:text-background-light opacity-0 group-hover:opacity-100 transition-opacity duration-300">EduHub</h1>
 </div>
 <nav class="flex-grow flex flex-col gap-2 p-2">
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="dashboard.html">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Dashboard</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="courses.html">
 <span class="material-symbols-outlined">book</span>
 <span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">My Courses</span>
 </a>
@@ -80,14 +80,14 @@
 <span class="material-symbols-outlined">trending_up</span>
 <span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Progress</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/20 dark:bg-primary/30 text-primary font-bold" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/20 dark:bg-primary/30 text-primary font-bold" href="AICHAT.html">
 <span class="material-symbols-outlined">smart_toy</span>
 <span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">AI Chat</span>
 </a>
 </nav>
 </div>
 <div class="p-2 shrink-0">
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="settings.html">
 <span class="material-symbols-outlined">settings</span>
 <span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Settings</span>
 </a>
@@ -120,39 +120,8 @@
 </header>
 <div class="flex-1 flex flex-col p-8">
 <div class="flex-1 flex flex-col bg-background-light dark:bg-background-dark/50 rounded-xl shadow-sm overflow-hidden">
-<div class="flex-1 p-6 space-y-6 overflow-y-auto">
-<div class="flex items-start gap-3">
-<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">smart_toy</span>
-</div>
-<div class="flex-1">
-<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-lg rounded-tl-none">
-<p class="text-background-dark dark:text-background-light">Hello Alex! I'm your AI assistant. How can I help you with your courses today?</p>
-</div>
-</div>
-</div>
-<div class="flex items-start gap-3 justify-end">
-<div class="flex-1 max-w-lg">
-<div class="bg-primary text-white p-4 rounded-lg rounded-br-none">
-<p>Can you give me a summary of the key concepts from my "Introduction to Python" course this week?</p>
-</div>
-</div>
-<img alt="User avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"/>
-</div>
-<div class="flex items-start gap-3">
-<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">smart_toy</span>
-</div>
-<div class="flex-1">
-<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-lg rounded-tl-none">
-<div class="flex items-center gap-2">
-<div class="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
-<div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
-<div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
-</div>
-</div>
-</div>
-</div>
+<div class="flex-1 p-6 space-y-6 overflow-y-auto" id="message-container">
+<!-- Chat messages will be dynamically inserted here -->
 </div>
 <div class="p-6 bg-background-light dark:bg-background-dark/60 border-t border-primary/20 dark:border-primary/30">
 <div class="mb-4 flex gap-2">
@@ -161,8 +130,8 @@
 <button class="px-4 py-2 text-sm bg-primary/10 dark:bg-primary/20 text-primary rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">Generate quiz</button>
 </div>
 <div class="relative">
-<input class="w-full bg-background-light/50 dark:bg-background-dark/30 border border-primary/20 dark:border-primary/40 rounded-lg pl-4 pr-12 py-3 focus:ring-primary focus:border-primary text-background-dark dark:text-background-light" placeholder="Type your message..." type="text"/>
-<button class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-primary text-white hover:opacity-90 transition-opacity">
+<input class="w-full bg-background-light/50 dark:bg-background-dark/30 border border-primary/20 dark:border-primary/40 rounded-lg pl-4 pr-12 py-3 focus:ring-primary focus:border-primary text-background-dark dark:text-background-light" id="message-input" placeholder="Type your message..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-primary text-white hover:opacity-90 transition-opacity" id="send-button">
 <span class="material-symbols-outlined">send</span>
 </button>
 </div>
@@ -204,4 +173,89 @@
     });
 </script>
 
+    <script>
+        const messageContainer = document.getElementById("message-container");
+        const messageInput = document.getElementById("message-input");
+        const sendButton = document.getElementById("send-button");
+
+        function addMessage(message, isUser = false) {
+            const messageElement = document.createElement("div");
+            if (isUser) {
+                messageElement.innerHTML = `
+                    <div class="flex items-start gap-3 justify-end">
+                        <div class="flex-1 max-w-lg">
+                            <div class="bg-primary text-white p-4 rounded-lg rounded-br-none">
+                                <p>${message}</p>
+                            </div>
+                        </div>
+                        <img alt="User avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"/>
+                    </div>`;
+            } else {
+                messageElement.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary">smart_toy</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-lg rounded-tl-none">
+                                <p class="text-background-dark dark:text-background-light">${message}</p>
+                            </div>
+                        </div>
+                    </div>`;
+            }
+            messageContainer.appendChild(messageElement);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            messageInput.value = "";
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ text: message }),
+                });
+
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+
+                const data = await response.json();
+
+                if (data.agent_role === "Default chatbot") {
+                    addMessage(data.reply, false);
+                } else {
+                    let page = "";
+                    if (data.agent_role === "Tutor") {
+                        page = "tutor.html";
+                    } else if (data.agent_role === "Practice Problem Generator") {
+                        page = "practice.html";
+                    } else if (data.agent_role === "Search") {
+                        page = "search.html";
+                    }
+
+                    if (page) {
+                        window.location.href = `${page}?q=${encodeURIComponent(data.task_description)}`;
+                    }
+                }
+            } catch (error) {
+                addMessage("Sorry, something went wrong.", false);
+                console.error("Error:", error);
+            }
+        }
+
+        sendButton.addEventListener("click", sendMessage);
+        messageInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
 </body></html>

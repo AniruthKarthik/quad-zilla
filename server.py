@@ -26,10 +26,19 @@ class Message(BaseModel):
 
 @app.post("/chat")
 async def chat_endpoint(message: Message):
-    print("User said:", message.text)  # just for debugging
-    response : dict = coordinate_queries(str(message.text))
+    print("User said:", message.text)
 
-    return response
+    # Get the agent and task from the coordinator
+    coord_response = coordinate_queries(message.text)
+
+    # Check if the default chatbot should be used
+    if coord_response.get("agent_role") == "Default chatbot":
+        # If so, run the task and return the reply in the format the frontend expects
+        reply = run_task_with_agent(coord_response["task_description"], "Default chatbot")
+        return {"reply": reply, "agent_role": "Default chatbot"}
+
+    # For any other agent, return the coordinator's response to trigger redirection
+    return coord_response
 
 
 @app.post("/search")
