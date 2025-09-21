@@ -26,8 +26,8 @@ class Message(BaseModel):
 
 @app.post("/chat")
 async def chat_endpoint(message: Message):
-    print("User said:", message.text)  # just for debugging
 
+    print("User said:", message.text)  # just for debugging
     response : str = ask_bot(message.text)
 
     # return {"reply": "hi"}  # always return "hi" for now
