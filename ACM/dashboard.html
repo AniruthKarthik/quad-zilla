@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduHub Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffaa00",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#231c0f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="flex min-h-screen">
+<aside class="flex flex-col bg-background-light dark:bg-background-dark border-r border-primary/20 dark:border-primary/30 transition-all duration-300 w-20 hover:w-64 shrink-0 overflow-hidden group" id="sidebar">
+<div class="flex items-center gap-3 mb-8 p-4 shrink-0">
+<button class="p-2 rounded-full text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" id="toggle-sidebar">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-2xl font-bold text-background-dark dark:text-background-light opacity-0 group-hover:opacity-100 transition-opacity duration-300">MyLMS</h1>
+</div>
+<nav class="flex flex-col gap-2 p-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/20 dark:bg-primary/30 text-primary font-bold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">book</span>
+<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">My Courses</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Progress</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">AI Chat</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Settings</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 overflow-y-auto">
+<header class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-primary/20 dark:border-primary/30">
+<div class="relative w-full max-w-sm">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-background-dark/50 dark:text-background-light/50">
+<svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+<input class="w-full pl-10 pr-4 py-2 rounded-lg bg-background-light dark:bg-background-dark/50 border border-transparent focus:border-primary focus:ring-primary text-sm text-background-dark dark:text-background-light placeholder:text-background-dark/50 dark:placeholder:text-background-light/50" placeholder="Search courses, mentors..." type="search"/>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<button class="p-2 rounded-full text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="absolute right-0 mt-2 w-80 bg-background-light dark:bg-background-dark/90 border border-primary/20 dark:border-primary/30 rounded-lg shadow-lg hidden group-hover:block">
+<div class="p-4">
+<h3 class="font-bold text-background-dark dark:text-background-light">Reminders</h3>
+<div class="mt-4 space-y-3">
+<div class="flex items-start gap-3 p-3 rounded-lg bg-background-light dark:bg-background-dark/30 border-l-4 border-primary">
+<div>
+<p class="font-bold text-sm text-background-dark dark:text-background-light">Submit Project Proposal</p>
+<p class="text-xs text-primary font-bold">Due: July 15, 2024</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 rounded-lg bg-background-light dark:bg-background-dark/30 border-l-4 border-primary/50">
+<div>
+<p class="font-bold text-sm text-background-dark dark:text-background-light">Complete Module 3 Quiz</p>
+<p class="text-xs text-background-dark/50 dark:text-background-light/50">Due: July 20, 2024</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 cursor-pointer">
+<img alt="Profile avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"/>
+</button>
+<div class="absolute right-0 mt-2 w-48 bg-background-light dark:bg-background-dark/90 border border-primary/20 dark:border-primary/30 rounded-lg shadow-lg hidden group-hover:block">
+<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Profile</a>
+<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Settings</a>
+<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Logout</a>
+</div>
+</div>
+</div>
+</header>
+<div class="p-6 grid grid-cols-1 lg:grid-cols-5 gap-6">
+<div class="lg:col-span-3 space-y-6">
+<div class="bg-background-light dark:bg-background-dark/50 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+<h2 class="text-xl font-bold mb-4 text-background-dark dark:text-background-light">Personalized Feed</h2>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-background-dark/30">
+<img alt="Course avatar" class="w-12 h-12 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCML2KZEGl4MB-KZOXRzF5dj3PuigxTKqMY7BsEmKDFIin8d7JS5gFu1pkU4ZKpiPe51vPd42JdzCHG2M6Dg4T-UIRe3TzBBMlEp2QmgWUWJa_p5Hx-0aEkFRGlnJyLiWNqB_0CPur68QE74_t_h5iYM06fa3NvDpqpevPkzzdAr6dQFrPMsfm_BXP9cqRHX5D1dwiulT1_u4DRz-_ORSND8QKjF3qz1jCJo7Wz7ScMgMtG140Uphqp0JcUtEPM5KobX4WJkcAl72WP"/>
+<div class="flex-1">
+<p class="font-bold text-background-dark dark:text-background-light">Advanced Data Analysis</p>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70 mt-1">The 'Advanced Data Analysis' course has a new module on predictive modeling. Check it out!</p>
+<p class="text-xs text-background-dark/50 dark:text-background-light/50 mt-2">Updated 2 days ago</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-background-dark/30">
+<img alt="Course avatar" class="w-12 h-12 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACZ_0d9LI1yYf-YM1d5JScPoDOR7LNN0A9xuU1IDprH_5Lpc4xRDmbqc9ffzC4hISc6aA5VA-5snVIYpifZ-ubYWgQ_KZmLqS-1zA7Zuld6PXrx5rK4FwACSc_mTzpPUxPInzcKfzhF3CoaO2eX50yxB0ACznQ78gdFuhP1OT94z-9Y2hxet0ScKh_QGDh_zt2G1msjJtZR-x2gI4R8qJkJP4mZOL3JvGQDLdAv8_H9CxuPVWuF74PSjMUL8ik9Ia_OxYayN62-0Dv"/>
+<div class="flex-1">
+<p class="font-bold text-background-dark dark:text-background-light">Digital Marketing Strategies</p>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70 mt-1">Excited to announce the launch of our new course, 'Digital Marketing Strategies'. Enroll now!</p>
+<p class="text-xs text-background-dark/50 dark:text-background-light/50 mt-2">Posted 3 days ago</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-background-dark/30">
+<img alt="Course avatar" class="w-12 h-12 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3R17o4u1TjF2T9uE_Xv8X-JjR_1S2F3K6jH0h4lG9Z_C-Uv-J-XjW6Z-N5L9n8-F_E7gY8R-U-I-O_L-K8jP-R-S-M-L-O-R-I-A-L-S-Y-S-T-E-M"/>
+<div class="flex-1">
+<p class="font-bold text-background-dark dark:text-background-light">Your mentor, Jane Doe, posted a new resource.</p>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70 mt-1">A new article "The Future of AI in Design" has been added to your 'UI/UX Design' course materials.</p>
+<p class="text-xs text-background-dark/50 dark:text-background-light/50 mt-2">Posted 1 hour ago</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-background-light dark:bg-background-dark/50 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+<h2 class="text-xl font-bold mb-4 text-background-dark dark:text-background-light">Ongoing Courses</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-background-light dark:bg-background-dark/30 p-4 rounded-lg flex flex-col gap-4">
+<img alt="Course thumbnail" class="w-full h-32 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcL_javH3-7npbNJ5XRSNZmg-sB8In84-tHh7MBYY0hbUpkNV9QCrfwsCBkBBecVkKgqQWdPHz4GUoYr7sfItfpRf-8ZG5Af4Jc7xHie6pqTHinQ1d_wneXdJ9orVYCK0T8tpsXGJEhhzdgYfjgrSjYKHJceQpxW2sVO-dX6kQBD4Tx6n6WtlVeeQR5jIWqp6Euhsd8ky1h7Nw766nx6BygBGUwWBfy9rRZ1GvISmKXaXWTjMdRmFlQiISez-0DFE7XsXxaT878PWI"/>
+<div>
+<h3 class="font-bold text-background-dark dark:text-background-light">Project Management</h3>
+<div class="w-full bg-primary/20 rounded-full h-2.5 my-2">
+<div class="bg-primary h-2.5 rounded-full" style="width: 65%"></div>
+</div>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70">65% Complete</p>
+</div>
+<button class="w-full mt-auto bg-primary text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">Continue</button>
+</div>
+<div class="bg-background-light dark:bg-background-dark/30 p-4 rounded-lg flex flex-col gap-4">
+<img alt="Course thumbnail" class="w-full h-32 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWayNE2POds_N9y7ButE5CRR9ExEYSb_vvslLDAaBgX6mEGESPYjO-3RYxYGGHfa7m5zDPKqRek1fMmiEnvzyjfRrOP30UtiOxlJISW9O82cHpHwDDXJhgVQL4TPnFyO26Sib_l9U9aRpoamKDcMGRWfnaAYvKRvusGKAWJIFtPlkikhQ5UcyIeX-k2lTi2kPAgsD7OtB43A_zq95WFxGMAoHqvE8lI6FLP91crT4LiBvSqMX2J6On78NsL8Li96hO84vN-IHu2V5n"/>
+<div>
+<h3 class="font-bold text-background-dark dark:text-background-light">Web Development</h3>
+<div class="w-full bg-primary/20 rounded-full h-2.5 my-2">
+<div class="bg-primary h-2.5 rounded-full" style="width: 80%"></div>
+</div>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70">80% Complete</p>
+</div>
+<button class="w-full mt-auto bg-primary text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">Continue</button>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-background-light dark:bg-background-dark/50 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+<h2 class="text-xl font-bold mb-4 text-background-dark dark:text-background-light">AI Chat</h2>
+<div class="flex flex-col items-center justify-center space-y-4 text-center">
+<span class="material-symbols-outlined text-7xl text-primary">smart_toy</span>
+<p class="text-background-dark/70 dark:text-background-light/70">Have a question? Ask our AI assistant for quick help and resources.</p>
+<button class="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">forum</span>
+<span>Start Chat</span>
+</button>
+</div>
+</div>
+<div class="bg-background-light dark:bg-background-dark/50 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+<h2 class="text-xl font-bold mb-4 text-background-dark dark:text-background-light">Suggested Courses</h2>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 rounded-lg bg-background-light dark:bg-background-dark/30">
+<img alt="Course thumbnail" class="w-24 h-16 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBngvUtJXP8ZIWbS13wecln5cpfMSv2TC3k4sQCDbJyGl-Eb5wIx86QCGUQN8MbU6TskcdrzrekHSi2ydyKn8rAHxk7OMu1CCmlX1oX9ZKP9uDefGQjLQW3gFwfjrFdihiABOs6a6RRqFxUgxGYNv9qDk7RAjAfupx7b67XlDyoiKjFtXS80vb2SSJItvKtg-xXGm4n1Wz-OEWwymcVz5aBEV72ohbIsBF4dW4XAv_iPK-jnsLy71rbMHNAtuJVSpY2IjrigKDacVGR"/>
+<div class="flex-1">
+<h3 class="font-bold text-background-dark dark:text-background-light">Graphic Design Essentials</h3>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70">Learn the principles of design.</p>
+</div>
+<button class="bg-primary/20 text-primary font-bold py-2 px-4 rounded-lg hover:bg-primary/30 transition-colors">Enroll</button>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-background-light dark:bg-background-dark/30">
+<img alt="Course thumbnail" class="w-24 h-16 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2j_5T-E7c-V-b5f7e8a9d0c1b_2_3_4_5_6_7_8_9_0-A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z_a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z-0-1-2-3-4-5-6-7-8-9"/>
+<div class="flex-1">
+<h3 class="font-bold text-background-dark dark:text-background-light">Introduction to Python</h3>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70">Start your programming journey.</p>
+</div>
+<button class="bg-primary/20 text-primary font-bold py-2 px-4 rounded-lg hover:bg-primary/30 transition-colors">Enroll</button>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-background-light dark:bg-background-dark/30">
+<img alt="Course thumbnail" class="w-24 h-16 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIj7Y_5B-c2e-D_4e_F_6g_H_8i_J_k_L_m_N_o_P_q_R_s_T_u_V_w_X_y_Z-a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z"/>
+<div class="flex-1">
+<h3 class="font-bold text-background-dark dark:text-background-light">Data Science with R</h3>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70">Master data analysis with R.</p>
+</div>
+<button class="bg-primary/20 text-primary font-bold py-2 px-4 rounded-lg hover:bg-primary/30 transition-colors">Enroll</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        document.getElementById('toggle-sidebar').addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('w-20');
+            sidebar.classList.toggle('w-64');
+        });
+    </script>
+</body></html>
