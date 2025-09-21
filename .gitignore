@@ -8,6 +8,3 @@ pyrightconfig.json
 
 .env
 
-*.js
-*.html
-*.css
