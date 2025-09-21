@@ -29,7 +29,6 @@ async def chat_endpoint(message: Message):
     print("User said:", message.text)  # just for debugging
     response : dict = coordinate_queries(str(message.text))
 
-    # return {"reply": "hi"}  # always return "hi" for now
     return response
 
 
@@ -38,7 +37,6 @@ async def search_endpoint(message: Message):
     print("User said:", message.text)  # just for debugging
     response : str = run_task_with_agent(str(message.text), "Search")
 
-    # return {"reply": "hi"}  # always return "hi" for now
     return {"reply" : response}
 
 
@@ -47,7 +45,6 @@ async def practice_endpoint(message: Message):
     print("User said:", message.text)  # just for debugging
     response : str = run_task_with_agent(str(message.text), "Practice Problem Generator")
 
-    # return {"reply": "hi"}  # always return "hi" for now
     return {"reply" : response}
 
 
@@ -56,5 +53,4 @@ async def tutor_endpoint(message: Message):
     print("User said:", message.text)  # just for debugging
     response : str = run_task_with_agent(str(message.text), "Tutor")
 
-    # return {"reply": "hi"}  # always return "hi" for now
     return {"reply" : response}
