@@ -61,8 +61,22 @@ default_agent = Agent(
 
 
 
-def ask_bot(query : str):
-    response = coordinate_queries(query)
+
+
+def ask_search(query : str):
+    response = run_task_with_agent(query, "Search")
+
+    print(response)
+    return response
+
+def ask_tutor(query : str):
+    response = run_task_with_agent(query, "Tutor")
+
+    print(response)
+    return response
+
+def ask_practice(query : str):
+    response = run_task_with_agent(query, "Practice Problem Generator")
 
     print(response)
     return response
@@ -84,19 +98,12 @@ def coordinate_queries(query):
     )
 
     # temporary crew
-    crew = Crew(agents=[coordinator_agent, tutor_agent, practice_agent, default_agent, search_agent], tasks=[task])
+    crew = Crew(agents=[coordinator_agent], tasks=[task])
     coord_result = str(crew.kickoff())
 
     coord_json = get_as_json(coord_result)
 
-    if not coord_json.get("task_description") or not coord_json.get("agent_role"):
-        print("ERROR: No data in coord_json")
-
-    result = run_task_with_agent(coord_json["task_description"], coord_json["agent_role"])
-
-
-    return f"DESC: {coord_json['task_description']}\n AGENT: {coord_json['agent_role']} \n\n Result: {result}"
-    return result
+    return coord_json
 
 
 def get_as_json(coord_result : str) -> dict[str, str]:
@@ -132,3 +139,5 @@ def run_task_with_agent(task_description: str, agent: str):
 
     result = temp_crew.kickoff()
     return str(result)
+
+
