@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Chat — MyLMS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffaa00",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#231c0f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+        .group:hover .group-hover\:w-60 {
+            width: 15rem;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="flex min-h-screen">
+<aside class="group fixed inset-y-0 left-0 z-20 w-24 overflow-y-auto bg-white dark:bg-background-dark shadow-md transition-all duration-300 ease-in-out hover:w-60">
+<div class="flex h-full flex-col">
+<div class="flex h-20 shrink-0 items-center justify-center border-b border-slate-200 dark:border-slate-800">
+<svg class="h-10 w-10 text-slate-900 dark:text-white" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<h1 class="ml-4 w-0 overflow-hidden text-2xl font-bold text-slate-900 dark:text-white transition-all duration-300 group-hover:w-32">MyLMS</h1>
+</div>
+<nav class="flex-1 space-y-2 px-6 py-6">
+<a class="flex items-center rounded-lg p-4 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="ml-4 w-0 overflow-hidden text-base font-medium transition-all duration-300 group-hover:w-32">Dashboard</span>
+</a>
+<a class="flex items-center rounded-lg p-4 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="ml-4 w-0 overflow-hidden text-base font-medium transition-all duration-300 group-hover:w-32">My Courses</span>
+</a>
+<a class="flex items-center rounded-lg p-4 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="ml-4 w-0 overflow-hidden text-base font-medium transition-all duration-300 group-hover:w-32">Progress</span>
+</a>
+<a class="flex items-center rounded-lg bg-primary/20 p-4 text-primary dark:text-primary" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="ml-4 w-0 overflow-hidden text-base font-medium transition-all duration-300 group-hover:w-32">AI Chat</span>
+</a>
+</nav>
+<div class="mt-auto px-6 pb-6">
+<a class="flex items-center rounded-lg p-4 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="ml-4 w-0 overflow-hidden text-base font-medium transition-all duration-300 group-hover:w-32">Settings</span>
+</a>
+<a class="flex items-center rounded-lg p-4 text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="ml-4 w-0 overflow-hidden text-base font-medium transition-all duration-300 group-hover:w-32">Logout</span>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex flex-1 flex-col pl-24">
+<header class="sticky top-0 z-10 border-b border-slate-200 bg-background-light/80 dark:border-slate-800 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="mx-auto px-6 sm:px-8 lg:px-10">
+<div class="flex h-20 items-center justify-end">
+<div class="flex items-center space-x-6">
+<button class="rounded-full p-2 text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-light dark:text-slate-400 dark:hover:bg-slate-800 dark:focus:ring-offset-background-dark">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User avatar" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq-fxXuvilZHTM7FggfrVg0LAYXjtUc7lfaLwwUw3cgdO38or_a1wBhGr_q2HJQ8mSjd12iNBOOP4R-hZESeW-qF61TaIPQ9zQ30IqMdSB7X_85-GAXQmQi7XZZHFnWsbw4shQlJN5l5FdRpjM2r6wvZeNVGPtneMZL6WaT83KzBUggIt9Yzy7T94TFCKGxl2ExeatU_Q5eUpj8RMoKIvnxq3SZA2W8pM1pcrqy23xSkbOHfBlCDWdWuwRUqo2T1ZgsV3szOIVfXGt"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 p-6">
+<div class="flex flex-col h-full rounded-xl bg-white shadow-lg dark:bg-slate-900/70">
+<div class="border-b border-slate-200 p-6 dark:border-slate-800">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">AI Chat</h2>
+</div>
+<div class="border-b border-slate-200 dark:border-slate-800">
+<nav aria-label="Tabs" class="flex space-x-6 px-6" x-data="{ activeTab: 'tutor' }">
+<a :class="{ 'border-primary text-slate-900 dark:text-white': activeTab === 'tutor', 'border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700 dark:text-slate-400 dark:hover:border-slate-700 dark:hover:text-slate-300': activeTab !== 'tutor' }" @click.prevent="activeTab = 'tutor'" class="border-b-2 px-1 py-4 text-base font-medium" href="#">Tutor</a>
+<a :class="{ 'border-primary text-slate-900 dark:text-white': activeTab === 'problems', 'border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700 dark:text-slate-400 dark:hover:border-slate-700 dark:hover:text-slate-300': activeTab !== 'problems' }" @click.prevent="activeTab = 'problems'" class="border-b-2 px-1 py-4 text-base font-medium" href="#">Problems</a>
+<a :class="{ 'border-primary text-slate-900 dark:text-white': activeTab === 'search', 'border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700 dark:text-slate-400 dark:hover:border-slate-700 dark:hover:text-slate-300': activeTab !== 'search' }" @click.prevent="activeTab = 'search'" class="border-b-2 px-1 py-4 text-base font-medium" href="#">Search</a>
+</nav>
+</div>
+<div class="flex-grow space-y-8 overflow-y-auto p-6">
+<div class="flex items-start gap-4">
+<img alt="AI Assistant avatar" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJb3YkPStmyX2tgyVbs26g3Y42lZ_RpnXRCsZmkcxoEHoqXjg9qAjWS6PTxwo64FfBTpjPaPiqkgAkjFZpQI8vHXqDmtn8T1g3QEeRTg79LR18CliZi_gmNnkv4URjnt-X-9sHV0l9TUO5YI9n7LQNMOzm6P7lVb5XlYJJ4WzOs1MoPpTaItcWYdUEN2psitEouKCx2VWAAHy_HFE7YEvTBmusmU7DhuUfKm21S6K_Y6Z_jpaASP3YPbvhWpSFmmHVohTlOZYdmVUV"/>
+<div class="flex flex-col gap-2">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">AI Assistant</span>
+<div class="max-w-lg rounded-xl rounded-tl-none bg-slate-100 p-4 dark:bg-slate-800">
+<p class="text-base text-slate-800 dark:text-slate-200">Hello! How can I assist you with your learning today?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto border-t border-slate-200 p-6 dark:border-slate-800">
+  <div class="relative">
+    <textarea id="chat-input"
+      class="w-full resize-none rounded-xl border border-slate-300 bg-slate-50 p-4 pr-28 text-base text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500"
+      placeholder="Ask me anything..." rows="3"></textarea>
+
+    <button id="send-btn"
+      class="absolute bottom-3.5 right-3.5 flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-base font-semibold text-white hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-slate-800">
+      Send
+      <span class="material-symbols-outlined text-lg">send</span>
+    </button>
+  </div>
+</div>
+
+
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script defer="" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const textarea = document.querySelector("textarea");
+    const sendButton = document.querySelector("button");
+    const chatContainer = document.querySelector(".flex-grow.space-y-8"); // container for messages
+
+    // Active tab variable
+    let activeTab = "tutor"; // default
+
+    // Tab click handlers
+    const tabLinks = document.querySelectorAll("nav[aria-label='Tabs'] a");
+    tabLinks.forEach(tab => {
+        tab.addEventListener("click", (e) => {
+            e.preventDefault();
+            activeTab = tab.textContent.toLowerCase().includes("tutor") ? "tutor" :
+                        tab.textContent.toLowerCase().includes("problem") ? "practice" :
+                        tab.textContent.toLowerCase().includes("search") ? "search" : "chat";
+        });
+    });
+
+    // Function to append messages
+    function appendMessage(sender, text) {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("flex", "items-start", "gap-4");
+
+        const avatar = document.createElement("img");
+        avatar.classList.add("h-10", "w-10", "rounded-full");
+        avatar.src = sender === "user"
+            ? "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+            : "https://lh3.googleusercontent.com/aida-public/AB6AXuDJb3YkPStmyX2tgyVbs26g3Y42lZ_RpnXRCsZmkcxoEHoqXjg9qAjWS6PTxwo64FfBTpjPaPiqkgAkjFZpQI8vHXqDmtn8T1g3QEeRTg79LR18CliZi_gmNnkv4URjnt-X-9sHV0l9TUO5YI9n7LQNMOzm6P7lVb5XlYJJ4WzOs1MoPpTaItcWYdUEN2psitEouKCx2VWAAHy_HFE7YEvTBmusmU7DhuUfKm21S6K_Y6Z_jpaASP3YPbvhWpSFmmHVohTlOZYdmVUV";
+
+        const bubble = document.createElement("div");
+        bubble.classList.add("flex", "flex-col", "gap-2", "max-w-lg", "rounded-xl", "p-4");
+        if(sender === "user") {
+            bubble.classList.add("bg-primary/20", "text-slate-900", "rounded-tr-none");
+        } else {
+            bubble.classList.add("bg-slate-100", "dark:bg-slate-800", "text-slate-800", "dark:text-slate-200", "rounded-tl-none");
+        }
+
+        const name = document.createElement("span");
+        name.classList.add("text-sm", "font-medium");
+        name.textContent = sender === "user" ? "You" : "AI Assistant";
+        name.classList.add(sender === "user" ? "text-slate-900" : "text-slate-600", "dark:text-slate-400");
+
+        const messageText = document.createElement("p");
+        messageText.classList.add("text-base");
+        messageText.textContent = text;
+
+        bubble.appendChild(name);
+        bubble.appendChild(messageText);
+        wrapper.appendChild(avatar);
+        wrapper.appendChild(bubble);
+        chatContainer.appendChild(wrapper);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Send message
+    sendButton.addEventListener("click", async () => {
+        const message = textarea.value.trim();
+        if (!message) return;
+
+        appendMessage("user", message);
+        textarea.value = "";
+
+        let endpoint = "/chat"; // default general AI
+        if(activeTab === "tutor") endpoint = "/tutor";
+        else if(activeTab === "practice") endpoint = "/practice";
+        else if(activeTab === "search") endpoint = "/search";
+
+        try {
+            const response = await fetch(`http://127.0.0.1:8000${endpoint}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text: message })
+            });
+
+            if(!response.ok) throw new Error("Network error");
+
+            const data = await response.json();
+            let reply = "";
+
+            if(endpoint === "/chat") {
+                // JSON with agent_role and task_description
+                reply = data.task_description || data.reply || "Sorry, no response.";
+            } else {
+                reply = data.reply || "Sorry, no response.";
+            }
+
+            appendMessage("ai", reply);
+
+        } catch(err) {
+            console.error(err);
+            appendMessage("ai", "Error connecting to the server.");
+        }
+    });
+
+    // Send message on Enter key
+    textarea.addEventListener("keydown", (e) => {
+        if(e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            sendButton.click();
+        }
+    });
+});
+</script>
+
+
+</body></html>

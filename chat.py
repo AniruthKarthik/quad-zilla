@@ -2,7 +2,7 @@ import json
 import os
 
 # load the api key from .env
-from load_dotenv import load_dotenv
+from dotenv import load_dotenv
 load_dotenv()
 
 from crewai import Agent, Crew, Task, LLM

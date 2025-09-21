@@ -42,6 +42,9 @@
         .group:hover .group-hover\:block {
             display: block;
         }
+        #profile-menu-button[aria-expanded="true"] + #profile-menu {
+            display: block;
+        }
     </style>
 </head>
 <body class="font-display bg-background-light dark:bg-background-dark">
@@ -111,14 +114,49 @@
 </div>
 </div>
 </div>
-<div class="relative group">
-<button class="flex items-center gap-2 cursor-pointer">
+<div class="relative">
+<button aria-expanded="false" aria-haspopup="true" class="flex items-center gap-2 cursor-pointer" id="profile-menu-button">
 <img alt="Profile avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"/>
 </button>
-<div class="absolute right-0 mt-2 w-48 bg-background-light dark:bg-background-dark/90 border border-primary/20 dark:border-primary/30 rounded-lg shadow-lg hidden group-hover:block">
-<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Profile</a>
-<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Settings</a>
-<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Logout</a>
+<div class="absolute right-0 mt-2 w-80 bg-background-light dark:bg-background-dark/90 border border-primary/20 dark:border-primary/30 rounded-lg shadow-lg hidden" id="profile-menu">
+<div class="p-4">
+<div class="flex items-center gap-4">
+<img alt="Profile avatar" class="w-16 h-16 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"/>
+<div>
+<p class="font-bold text-lg text-background-dark dark:text-background-light">Alex Morgan</p>
+<p class="text-sm text-background-dark/70 dark:text-background-light/70">alex.morgan@example.com</p>
+</div>
+</div>
+<div class="mt-4 border-t border-primary/20 dark:border-primary/30 pt-4">
+<div class="grid grid-cols-2 gap-y-3 gap-x-4">
+<div class="text-sm">
+<p class="font-medium text-background-dark/70 dark:text-background-light/70">Name</p>
+<p class="font-bold text-background-dark dark:text-background-light">Alex Morgan</p>
+</div>
+<div class="text-sm">
+<p class="font-medium text-background-dark/70 dark:text-background-light/70">Age</p>
+<p class="font-bold text-background-dark dark:text-background-light">28</p>
+</div>
+<div class="text-sm">
+<p class="font-medium text-background-dark/70 dark:text-background-light/70">Pace</p>
+<p class="font-bold text-background-dark dark:text-background-light">Moderate</p>
+</div>
+<div class="text-sm">
+<p class="font-medium text-background-dark/70 dark:text-background-light/70">Level</p>
+<p class="font-bold text-background-dark dark:text-background-light">Intermediate</p>
+</div>
+<div class="text-sm col-span-2">
+<p class="font-medium text-background-dark/70 dark:text-background-light/70">Date of Birth (DOB)</p>
+<p class="font-bold text-background-dark dark:text-background-light">July 15, 1996</p>
+</div>
+</div>
+</div>
+<div class="mt-4 border-t border-primary/20 dark:border-primary/30 pt-4 flex justify-end">
+<a class="text-sm text-background-dark/70 dark:text-background-light/70 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-base">logout</span>
+</a>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -184,14 +222,18 @@
 </div>
 <div class="lg:col-span-2 space-y-6">
 <div class="bg-background-light dark:bg-background-dark/50 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
-<h2 class="text-xl font-bold mb-4 text-background-dark dark:text-background-light">AI Chat</h2>
+<h2 class="text-xl font-bold mb-4 text-background-dark dark:text-background-light">AI Chat Shortcut</h2>
 <div class="flex flex-col items-center justify-center space-y-4 text-center">
 <span class="material-symbols-outlined text-7xl text-primary">smart_toy</span>
-<p class="text-background-dark/70 dark:text-background-light/70">Have a question? Ask our AI assistant for quick help and resources.</p>
-<button class="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-<span class="material-symbols-outlined">forum</span>
-<span>Start Chat</span>
-</button>
+      <p class="text-background-dark/70 dark:text-background-light/70">
+        Have a question? Ask our AI assistant for quick help and resources.
+      </p>
+      <!-- Fixed Start Chat button -->
+      <a href="AICHAT.html"
+         class="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined">forum</span>
+        Start Chat
+      </a>
 </div>
 </div>
 <div class="bg-background-light dark:bg-background-dark/50 p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
@@ -232,6 +274,20 @@
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('w-20');
             sidebar.classList.toggle('w-64');
+        });
+        const profileMenuButton = document.getElementById('profile-menu-button');
+        const profileMenu = document.getElementById('profile-menu');
+        profileMenuButton.addEventListener('click', () => {
+            const isExpanded = profileMenuButton.getAttribute('aria-expanded') === 'true';
+            profileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            profileMenu.classList.toggle('hidden');
+        });
+        // Close the menu when clicking outside of it
+        document.addEventListener('click', (event) => {
+            if (!profileMenuButton.contains(event.target) && !profileMenu.contains(event.target)) {
+                profileMenu.classList.add('hidden');
+                profileMenuButton.setAttribute('aria-expanded', 'false');
+            }
         });
     </script>
 </body></html>
