@@ -26,16 +26,13 @@ async function sendMessage() {
   const message = messageInput.value.trim();
   if (!message) return;
 
-  // Add user message to chat
   addMessage(message, true);
   messageInput.value = "";
   sendButton.disabled = true;
 
-  // Show typing indicator
   showTypingIndicator();
 
   try {
-    // ✅ Call Python backend (FastAPI)
     const response = await fetch("http://127.0.0.1:8000/chat", {
       method: "POST",
       headers: {
@@ -50,9 +47,24 @@ async function sendMessage() {
 
     const data = await response.json();
 
-    // Hide typing indicator and show backend response
     hideTypingIndicator();
-    addMessage(data.reply, false);
+
+    if (data.agent_role === "Default chatbot") {
+      addMessage(data.reply, false);
+    } else {
+      let page = "";
+      if (data.agent_role === "Search") {
+        page = "search.html";
+      } else if (data.agent_role === "Practice Problem Generator") {
+        page = "practice.html";
+      } else if (data.agent_role === "Tutor") {
+        page = "tutor.html";
+      }
+
+      if (page) {
+        window.location.href = `${page}?q=${encodeURIComponent(data.task_description)}`;
+      }
+    }
   } catch (error) {
     hideTypingIndicator();
     addMessage(

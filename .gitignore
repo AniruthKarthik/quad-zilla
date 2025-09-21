@@ -7,3 +7,7 @@ pyrightconfig.json
 .python-version
 
 .env
+
+*.js
+*.html
+*.css
