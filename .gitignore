@@ -8,3 +8,8 @@ pyrightconfig.json
 
 .env
 
+=======
+.env/
+.env
+
+ui.*
