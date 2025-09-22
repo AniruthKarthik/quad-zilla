@@ -1,207 +1,342 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>EduHub AI Chat</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#ffaa00",
-                        "background-light": "#f8f7f5",
-                        "background-dark": "#231c0f",
-                    },
-                    fontFamily: {
-                        "display": ["Inter"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.5rem",
-                        "lg": "1rem",
-                        "xl": "1.5rem",
-                        "full": "9999px"
-                    },
-                },
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EduHub AI Chat</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ffaa00",
+              "background-light": "#f8f7f5",
+              "background-dark": "#231c0f",
             },
-        }
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
     </script>
-<style type="text/tailwindcss"></style>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings:
-                'FILL' 0,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 24
-        }
-        .group:hover .group-hover\:block {
-            display: block;
-        }
-        .sidebar-expanded {
-            width: 16rem;
-        }
-        .sidebar-collapsed {
-            width: 5rem;
-        }
-        .main-content-expanded {
-            margin-left: 16rem;
-        }
-        .main-content-collapsed {
-            margin-left: 5rem;
-        }
+    <style type="text/tailwindcss"></style>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .group:hover .group-hover\:block {
+        display: block;
+      }
+      .sidebar-expanded {
+        width: 16rem;
+      }
+      .sidebar-collapsed {
+        width: 5rem;
+      }
+      .main-content-expanded {
+        margin-left: 16rem;
+      }
+      .main-content-collapsed {
+        margin-left: 5rem;
+      }
     </style>
-</head>
-<body class="font-display bg-background-light dark:bg-background-dark">
-<div class="flex h-screen">
-<aside class="fixed top-0 left-0 h-full flex flex-col bg-background-light dark:bg-background-dark border-r border-primary/20 dark:border-primary/30 transition-all duration-300 w-20 hover:w-64 shrink-0 group z-20" id="sidebar">
-<div class="flex flex-col flex-1 overflow-y-auto">
-<div class="flex items-center gap-3 mb-8 p-4 shrink-0">
-<button class="p-2 rounded-full text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" id="toggle-sidebar-btn">
-<span class="material-symbols-outlined">menu</span>
-</button>
-<h1 class="text-2xl font-bold text-background-dark dark:text-background-light opacity-0 group-hover:opacity-100 transition-opacity duration-300">EduHub</h1>
-</div>
-<nav class="flex-grow flex flex-col gap-2 p-2">
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">dashboard</span>
-<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">book</span>
-<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">My Courses</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">trending_up</span>
-<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Progress</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/20 dark:bg-primary/30 text-primary font-bold" href="#">
-<span class="material-symbols-outlined">smart_toy</span>
-<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">AI Chat</span>
-</a>
-</nav>
-</div>
-<div class="p-2 shrink-0">
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">settings</span>
-<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Settings</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">logout</span>
-<span class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Logout</span>
-</a>
-</div>
-</aside>
-<main class="flex-1 flex flex-col transition-all duration-300 ml-20" id="main-content">
-<header class="sticky top-0 z-10 flex items-center justify-between px-8 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-primary/20 dark:border-primary/30">
-<div class="flex items-center gap-2 text-background-dark dark:text-background-light">
-<h1 class="text-2xl font-bold">AI Chat</h1>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 rounded-full text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<div class="relative group">
-<button class="flex items-center gap-2 cursor-pointer">
-<img alt="Profile avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"/>
-</button>
-<div class="absolute right-0 mt-2 w-48 bg-background-light dark:bg-background-dark/90 border border-primary/20 dark:border-primary/30 rounded-lg shadow-lg hidden group-hover:block z-20">
-<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Profile</a>
-<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Settings</a>
-<a class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20" href="#">Logout</a>
-</div>
-</div>
-</div>
-</header>
-<div class="flex-1 flex flex-col p-8">
-<div class="flex-1 flex flex-col bg-background-light dark:bg-background-dark/50 rounded-xl shadow-sm overflow-hidden">
-<div class="flex-1 p-6 space-y-6 overflow-y-auto">
-<div class="flex items-start gap-3">
-<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">smart_toy</span>
-</div>
-<div class="flex-1">
-<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-lg rounded-tl-none">
-<p class="text-background-dark dark:text-background-light">Hello Alex! I'm your AI assistant. How can I help you with your courses today?</p>
-</div>
-</div>
-</div>
-<div class="flex items-start gap-3 justify-end">
-<div class="flex-1 max-w-lg">
-<div class="bg-primary text-white p-4 rounded-lg rounded-br-none">
-<p>Can you give me a summary of the key concepts from my "Introduction to Python" course this week?</p>
-</div>
-</div>
-<img alt="User avatar" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"/>
-</div>
-<div class="flex items-start gap-3">
-<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">smart_toy</span>
-</div>
-<div class="flex-1">
-<div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-lg rounded-tl-none">
-<div class="flex items-center gap-2">
-<div class="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
-<div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
-<div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="p-6 bg-background-light dark:bg-background-dark/60 border-t border-primary/20 dark:border-primary/30">
-<div class="mb-4 flex gap-2">
-<button class="px-4 py-2 text-sm bg-primary/10 dark:bg-primary/20 text-primary rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">Summarize lesson</button>
-<button class="px-4 py-2 text-sm bg-primary/10 dark:bg-primary/20 text-primary rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">Explain a concept</button>
-<button class="px-4 py-2 text-sm bg-primary/10 dark:bg-primary/20 text-primary rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">Generate quiz</button>
-</div>
-<div class="relative">
-<input class="w-full bg-background-light/50 dark:bg-background-dark/30 border border-primary/20 dark:border-primary/40 rounded-lg pl-4 pr-12 py-3 focus:ring-primary focus:border-primary text-background-dark dark:text-background-light" placeholder="Type your message..." type="text"/>
-<button class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-primary text-white hover:opacity-90 transition-opacity">
-<span class="material-symbols-outlined">send</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-<script>
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('main-content');
-    const toggleBtn = document.getElementById('toggle-sidebar-btn');
-    function toggleSidebar() {
-        const isCollapsed = sidebar.classList.contains('w-20');
+  </head>
+  <body class="font-display bg-background-light dark:bg-background-dark">
+    <div class="flex h-screen">
+      <aside
+        class="fixed top-0 left-0 h-full flex flex-col bg-background-light dark:bg-background-dark border-r border-primary/20 dark:border-primary/30 transition-all duration-300 w-20 hover:w-64 shrink-0 group z-20"
+        id="sidebar"
+      >
+        <div class="flex flex-col flex-1 overflow-y-auto">
+          <div class="flex items-center gap-3 mb-8 p-4 shrink-0">
+            <button
+              class="p-2 rounded-full text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors"
+              id="toggle-sidebar-btn"
+            >
+              <span class="material-symbols-outlined">menu</span>
+            </button>
+            <h1
+              class="text-2xl font-bold text-background-dark dark:text-background-light opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              EduHub
+            </h1>
+          </div>
+          <nav class="flex-grow flex flex-col gap-2 p-2">
+            <a
+              class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined">dashboard</span>
+              <span
+                class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >Dashboard</span
+              >
+            </a>
+            <a
+              class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined">book</span>
+              <span
+                class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >My Courses</span
+              >
+            </a>
+            <a
+              class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors"
+              href="#"
+            >
+              <span class="material-symbols-outlined">trending_up</span>
+              <span
+                class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >Progress</span
+              >
+            </a>
+            <a
+              class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/20 dark:bg-primary/30 text-primary font-bold"
+              href="#"
+            >
+              <span class="material-symbols-outlined">smart_toy</span>
+              <span
+                class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >AI Chat</span
+              >
+            </a>
+          </nav>
+        </div>
+        <div class="p-2 shrink-0">
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors"
+            href="#"
+          >
+            <span class="material-symbols-outlined">settings</span>
+            <span
+              class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >Settings</span
+            >
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-lg text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors"
+            href="#"
+          >
+            <span class="material-symbols-outlined">logout</span>
+            <span
+              class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >Logout</span
+            >
+          </a>
+        </div>
+      </aside>
+      <main
+        class="flex-1 flex flex-col transition-all duration-300 ml-20"
+        id="main-content"
+      >
+        <header
+          class="sticky top-0 z-10 flex items-center justify-between px-8 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-primary/20 dark:border-primary/30"
+        >
+          <div
+            class="flex items-center gap-2 text-background-dark dark:text-background-light"
+          >
+            <h1 class="text-2xl font-bold">AI Chat</h1>
+          </div>
+          <div class="flex items-center gap-4">
+            <button
+              class="p-2 rounded-full text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors"
+            >
+              <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <div class="relative group">
+              <button class="flex items-center gap-2 cursor-pointer">
+                <img
+                  alt="Profile avatar"
+                  class="w-10 h-10 rounded-full"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"
+                />
+              </button>
+              <div
+                class="absolute right-0 mt-2 w-48 bg-background-light dark:bg-background-dark/90 border border-primary/20 dark:border-primary/30 rounded-lg shadow-lg hidden group-hover:block z-20"
+              >
+                <a
+                  class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20"
+                  href="#"
+                  >Profile</a
+                >
+                <a
+                  class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20"
+                  href="#"
+                  >Settings</a
+                >
+                <a
+                  class="block px-4 py-2 text-sm text-background-dark/70 dark:text-background-light/70 hover:bg-primary/10 dark:hover:bg-primary/20"
+                  href="#"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="flex-1 flex flex-col p-8">
+          <div
+            class="flex-1 flex flex-col bg-background-light dark:bg-background-dark/50 rounded-xl shadow-sm overflow-hidden"
+          >
+            <div class="flex-1 p-6 space-y-6 overflow-y-auto">
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >smart_toy</span
+                  >
+                </div>
+                <div class="flex-1">
+                  <div
+                    class="bg-primary/10 dark:bg-primary/20 p-4 rounded-lg rounded-tl-none"
+                  >
+                    <p class="text-background-dark dark:text-background-light">
+                      Hello Alex! I'm your AI assistant. How can I help you with
+                      your courses today?
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 justify-end">
+                <div class="flex-1 max-w-lg">
+                  <div
+                    class="bg-primary text-white p-4 rounded-lg rounded-br-none"
+                  >
+                    <p>
+                      Can you give me a summary of the key concepts from my
+                      "Introduction to Python" course this week?
+                    </p>
+                  </div>
+                </div>
+                <img
+                  alt="User avatar"
+                  class="w-10 h-10 rounded-full"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc2wcSiv5pPp5medQ9kRnFUPikrWvqYLoQLiaOCYvHgGGykMAGBiDzmn7TdZxafPdd6bbbJm6O-7saQRdFkMR-WxcApJp7MCy9t-uzoEyM0-odYfrsEvV7-JM7sZQuoT0eX6X55HwYOS7Qt_Ch-1aNo9AbYhVYHnLWzQ5pHcGVefcg41ZtjTun2P-OjWjmlGYDYmOpAiTpDJ-LnyyF2f_rqlkMA7MFG2vBAzDkya_KWfLl8klb1ZJxOCmpuwWhfhu7VpG_4wiZvCtS"
+                />
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >smart_toy</span
+                  >
+                </div>
+                <div class="flex-1">
+                  <div
+                    class="bg-primary/10 dark:bg-primary/20 p-4 rounded-lg rounded-tl-none"
+                  >
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="w-2 h-2 bg-primary rounded-full animate-bounce"
+                      ></div>
+                      <div
+                        class="w-2 h-2 bg-primary rounded-full animate-bounce"
+                        style="animation-delay: 0.1s"
+                      ></div>
+                      <div
+                        class="w-2 h-2 bg-primary rounded-full animate-bounce"
+                        style="animation-delay: 0.2s"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="p-6 bg-background-light dark:bg-background-dark/60 border-t border-primary/20 dark:border-primary/30"
+            >
+              <div class="mb-4 flex gap-2">
+                <button
+                  class="px-4 py-2 text-sm bg-primary/10 dark:bg-primary/20 text-primary rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors"
+                >
+                  Summarize lesson
+                </button>
+                <button
+                  class="px-4 py-2 text-sm bg-primary/10 dark:bg-primary/20 text-primary rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors"
+                >
+                  Explain a concept
+                </button>
+                <button
+                  class="px-4 py-2 text-sm bg-primary/10 dark:bg-primary/20 text-primary rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors"
+                >
+                  Generate quiz
+                </button>
+              </div>
+              <div class="relative">
+                <input
+                  class="w-full bg-background-light/50 dark:bg-background-dark/30 border border-primary/20 dark:border-primary/40 rounded-lg pl-4 pr-12 py-3 focus:ring-primary focus:border-primary text-background-dark dark:text-background-light"
+                  placeholder="Type your message..."
+                  type="text"
+                />
+                <button
+                  class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-primary text-white hover:opacity-90 transition-opacity"
+                >
+                  <span class="material-symbols-outlined">send</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const mainContent = document.getElementById("main-content");
+      const toggleBtn = document.getElementById("toggle-sidebar-btn");
+      function toggleSidebar() {
+        const isCollapsed = sidebar.classList.contains("w-20");
         if (isCollapsed) {
-            sidebar.classList.remove('w-20');
-            sidebar.classList.add('w-64');
-            mainContent.classList.remove('ml-20');
-            mainContent.classList.add('ml-64');
+          sidebar.classList.remove("w-20");
+          sidebar.classList.add("w-64");
+          mainContent.classList.remove("ml-20");
+          mainContent.classList.add("ml-64");
         } else {
-            sidebar.classList.remove('w-64');
-            sidebar.classList.add('w-20');
-            mainContent.classList.remove('ml-64');
-            mainContent.classList.add('ml-20');
+          sidebar.classList.remove("w-64");
+          sidebar.classList.add("w-20");
+          mainContent.classList.remove("ml-64");
+          mainContent.classList.add("ml-20");
         }
-    }
-    toggleBtn.addEventListener('click', toggleSidebar);
-    sidebar.addEventListener('mouseenter', () => {
-        if (sidebar.classList.contains('w-20')) {
-             mainContent.style.transition = 'margin-left 300ms ease-in-out';
-             mainContent.style.marginLeft = '16rem';
+      }
+      toggleBtn.addEventListener("click", toggleSidebar);
+      sidebar.addEventListener("mouseenter", () => {
+        if (sidebar.classList.contains("w-20")) {
+          mainContent.style.transition = "margin-left 300ms ease-in-out";
+          mainContent.style.marginLeft = "16rem";
         }
-    });
-    sidebar.addEventListener('mouseleave', () => {
-        if (sidebar.classList.contains('w-20')) {
-             mainContent.style.transition = 'margin-left 300ms ease-in-out';
-             mainContent.style.marginLeft = '5rem';
+      });
+      sidebar.addEventListener("mouseleave", () => {
+        if (sidebar.classList.contains("w-20")) {
+          mainContent.style.transition = "margin-left 300ms ease-in-out";
+          mainContent.style.marginLeft = "5rem";
         }
-    });
-</script>
+      });
+    </script>
+  </body>
+</html>
 
-</body></html>

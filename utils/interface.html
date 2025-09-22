@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyBot Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .chat-container {
+        max-height: 70vh;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+      .chat-bubble {
+        max-width: 80%;
+        margin: 0.5rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        word-wrap: break-word;
+      }
+      .user-bubble {
+        background-color: #3b82f6;
+        color: white;
+        margin-left: auto;
+      }
+      .bot-bubble {
+        background-color: #e5e7eb;
+        color: #1f2937;
+      }
+      #chat::-webkit-scrollbar {
+        width: 8px;
+      }
+      #chat::-webkit-scrollbar-thumb {
+        background-color: #9ca3af;
+        border-radius: 4px;
+      }
+      #chat::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-2xl bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+        StudyBot
+      </h2>
+      <div
+        id="chat"
+        class="chat-container mb-4 p-4 bg-gray-50 rounded-lg"
+      ></div>
+      <div class="flex gap-2">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Type your message..."
+          class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          onclick="sendMessage()"
+          class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+    <script>
+      async function sendMessage() {
+        const input = document.getElementById("userInput").value.trim();
+        if (!input) return; // Prevent sending empty messages
+        const responseDiv = document.getElementById("chat");
+
+        // Display user message
+        responseDiv.innerHTML += `<div class="chat-bubble user-bubble"><strong>You:</strong> ${input}</div>`;
+
+        try {
+          // Send POST request
+          const res = await fetch("http://127.0.0.1:8000/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: input }),
+          });
+          const data = await res.json();
+
+          // Display bot response
+          responseDiv.innerHTML += `<div class="chat-bubble bot-bubble"><strong>StudyBot:</strong> ${data.response}</div>`;
+        } catch (error) {
+          responseDiv.innerHTML += `<div class="chat-bubble bot-bubble text-red-600"><strong>StudyBot:</strong> Error: Could not connect to server</div>`;
+        }
+
+        // Clear input and scroll to bottom
+        document.getElementById("userInput").value = "";
+        responseDiv.scrollTop = responseDiv.scrollHeight;
+      }
+
+      // Allow sending message with Enter key
+      document.getElementById("userInput").addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage();
+      });
+    </script>
+  </body>
+</html>

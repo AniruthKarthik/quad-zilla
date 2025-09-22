@@ -7,4 +7,6 @@ pyrightconfig.json
 .python-version
 
 .env
+venv/*
 
+ui.*

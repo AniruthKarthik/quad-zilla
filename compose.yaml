@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    ports:
+      - mode: ingress
+        target: 8000
+        published: 8000
