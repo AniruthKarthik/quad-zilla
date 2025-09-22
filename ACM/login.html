@@ -160,6 +160,15 @@ const loginTab = document.getElementById("loginTab");
 const signupTab = document.getElementById("signupTab");
 const loginForm = document.getElementById("loginForm");
 const signupForm = document.getElementById("signupForm");
+const loginButton = document.getElementById("loginButton");
+const signupButton = document.getElementById("signupButton");
+const googleButton = document.getElementById("googleButton");
+const sendResetLink = document.getElementById("sendResetLink");
+
+// Function to redirect to dashboard
+function redirectToDashboard() {
+    window.location.href = 'dashboard.html';
+}
 
 // Switch tabs
 loginTab.onclick = () => {
@@ -173,6 +182,26 @@ signupTab.onclick = () => {
   loginForm.classList.add("hidden");
   signupTab.classList.add("text-primary","border-accent","border-b-2");
   loginTab.classList.remove("text-primary","border-accent","border-b-2");
+};
+
+// Form submissions redirect to dashboard
+loginForm.onsubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically validate credentials
+    // For demo purposes, redirect directly
+    redirectToDashboard();
+};
+
+signupForm.onsubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically create a new account
+    // For demo purposes, redirect directly
+    redirectToDashboard();
+};
+
+// Google button also redirects to dashboard
+googleButton.onclick = () => {
+    redirectToDashboard();
 };
 
 // Password rules check
